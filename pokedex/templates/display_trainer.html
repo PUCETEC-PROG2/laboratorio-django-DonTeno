@@ -44,13 +44,12 @@
         </nav>
 
 
-        <p>Has elegido el pokemon: <strong>{{ pokemon | capfirst }}</strong></p>
-        <h3>Información del pokemon</h3>
+        <p>Has elegido el Entrenador: <strong>{{ trainer | capfirst }}</strong></p>
+        <h3>Información del Entrenador</h3>
         <ul>
-            <li>Nombre:{{ pokemon.name }}</li>
-            <li>Tipo: {{pokemon.type}}</li>
-            <li>Peso: {{pokemon.weight}}</li>
-            <li>Altura: {{pokemon.height}}</li>
+            <li>Nombre: {{trainer}}</li>
+            <li>Nivel: {{trainer.level}}</li>
+            <li>Fecha de Nacimiento: {{trainer.birth_date}}</li>
         </ul>
     </div>
 </body>
