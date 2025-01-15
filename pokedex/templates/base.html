@@ -11,7 +11,27 @@
         <div class="container">
             <div class="bg-primary text-white p-4 text-center">
                 <img src="{% static "logo.svg" %}" alt="logo" class="logo"> 
+                
             </div>
+            <nav class="navbar navbar-expand-lg bg-body-tertiary" style="background-color: #e3f2fd;">
+                <div class="container-fluid">
+                    <img src="{% static "Pokebola-pokeball-png-0.png" %}" alt="logo_nav" class="logo_nav"> 
+                    <a class="navbar-brand" href="http://localhost:8000/">Home</a>
+                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                      <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="http://localhost:8000/#pokemons">Pokemons</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="http://localhost:8000/#entrenadores">Entrenadores</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </nav>
             {% block content %}{% endblock content %}
 
             
