@@ -5,10 +5,11 @@
 
 
   <h3>Pokemons</h3>
+  <a href="{% url "pokedex:add_pokemon" %}">Añadir Pokemon</a>
   <div class="row">
     {% for pokemon in pokemons %}
     <div class="col-sm-4">
-      <a href="{{pokemon.id}}">{{ pokemon | capfirst }}</a>
+
       
       <div class="card" style="width: 18rem;">
         <img class="card-img-top" src="{{pokemon.picture.url}}" alt="Card image cap">
