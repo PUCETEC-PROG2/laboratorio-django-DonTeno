@@ -21,7 +21,8 @@ from lab8 import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('pokedex.urls', namespace='pokedex'))
+    path('', include('pokedex.urls', namespace='pokedex')),
+    path('accounts/', include('django.contrib.auth.urls'))
     
 ]
 
