@@ -11,8 +11,15 @@ def index(request):
         'pokemons': pokemons
         },
         request))
-    
-    
+
+def pokemon(request, pokemon_id):
+    pokemon = Pokemon.objects.get(pk = pokemon_id)
+    template = loader.get_template('display_pokemon.html')
+    context = {
+        'pokemon': pokemon
+    }
+    return HttpResponse(template.render(context, request))
+
 def trainers(request):
     trainers = Trainer.objects.order_by('first_name')
     template = loader.get_template('trainers.html')
@@ -20,12 +27,12 @@ def trainers(request):
         'trainers': trainers
     },
     request))
-
-def pokemon(request, pokemon_id):
-    pokemon = Pokemon.objects.get(pk = pokemon_id)
-    template = loader.get_template('display_pokemon.html')
+    
+def trainer_details(request, trainer_id):
+    trainer = Trainer.objects.get(pk = trainer_id)
+    template = loader.get_template('display_trainer.html')
     context = {
-        'pokemon': pokemon
+        'trainer': trainer
     }
     return HttpResponse(template.render(context, request))
 
@@ -40,11 +47,15 @@ def add_pokemon(request):
 
     return render(request, 'pokemon_form.html', {'form': form})
 
+def edit_pokemon(request, pokemon_id):
+    pokemon = Pokemon.objects.get(pk = pokemon_id)
+    if request.method == "POST":
+        form = PokemonForm(request.POST, request.FILES, instance=pokemon)
+        if form.is_valid():
+            form.save()
+            return redirect('pokedex:index')
+    else:
+        form = PokemonForm(instance=pokemon)
 
-def trainer_details(request, trainer_id):
-    trainer = Trainer.objects.get(pk = trainer_id)
-    template = loader.get_template('display_trainer.html')
-    context = {
-        'trainer': trainer
-    }
-    return HttpResponse(template.render(context, request))
+    return render(request, 'pokemon_form.html', {'form': form})
+
