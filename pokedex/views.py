@@ -59,3 +59,7 @@ def edit_pokemon(request, pokemon_id):
 
     return render(request, 'pokemon_form.html', {'form': form})
 
+def delete_pokemon(request, pokemon_id):
+    pokemon = Pokemon.objects.get(pk = pokemon_id)
+    pokemon.delete()
+    return redirect('pokedex:index')
